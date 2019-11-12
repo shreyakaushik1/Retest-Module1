@@ -1,0 +1,27 @@
+<form>
+  <table border="1">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Title</th>
+      <th>Completed</th>
+    </tr>
+    <!-- <tr *ngFor='let i of finalData'> -->
+        <tr *ngFor='let i of finalData| paginate: { itemsPerPage: 5, currentPage: p } ' (click)='singleObjectCall(i.profileId)'>
+      <td>{{i.id}}</td>
+      <td >{{i.name}}</td>
+      <td>{{i.email}}</td>
+      <td >{{i.title}}</td>
+      <td>{{i.completed}}</td>
+    </tr>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</form>
+
+<div *ngIf="userData.userId != 0">
+  {{userData.id}}<br>
+  {{userData.title}}<br>
+  {{userData.completed}}
+</div>
+
